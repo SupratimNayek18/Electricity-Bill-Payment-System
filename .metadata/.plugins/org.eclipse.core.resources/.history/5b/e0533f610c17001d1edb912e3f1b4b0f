@@ -1,0 +1,14 @@
+package electricitybillpaymentsystem.entities;
+
+import javax.persistence.Entity;
+
+@Entity
+public class Customer {
+	
+	private Long customerId;
+	private Long aadharNumber;
+	private String firstName;
+	private Long middleName;
+	private Long lastName;
+	
+}
