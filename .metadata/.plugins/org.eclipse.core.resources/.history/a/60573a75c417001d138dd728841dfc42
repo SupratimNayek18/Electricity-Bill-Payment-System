@@ -1,0 +1,17 @@
+package electricitybillpaymentsystem.entities;
+
+import java.time.LocalDate;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "connection")
+public class Connection {
+	
+	private Long connectionId;
+	private Long consumerNumber;
+	private LocalDate applicationDate;
+	private LocalDate connectionDate;
+	private boolean connectionStatus;
+}

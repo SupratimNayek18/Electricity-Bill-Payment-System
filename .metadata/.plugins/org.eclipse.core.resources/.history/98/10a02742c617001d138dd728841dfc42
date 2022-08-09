@@ -1,0 +1,17 @@
+package electricitybillpaymentsystem.entities;
+
+import java.time.LocalDate;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "payment")
+public class Payment {
+	
+	private Long paymentId;
+	private LocalDate paymentDate;
+	private Double latePaymentCharges;
+	private Double totalPaid;
+	private Boolean status;
+}
