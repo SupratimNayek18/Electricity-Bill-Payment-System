@@ -1,12 +1,19 @@
 package electricitybillpaymentsystem.entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+
+
 
 @Entity
 @Table(name = "customer")
@@ -25,6 +32,10 @@ public class Customer {
 	private String mobileNumber;
 	private String email;
 	private String gender;
+	
+	@JsonIgnore
+	@OneToOne(cascade = CascadeType.ALL)
+	private User user;
 
 	// Default Constructor
 	public Customer() {
@@ -93,6 +104,15 @@ public class Customer {
 
 	public void setGender(String gender) {
 		this.gender = gender;
+	}
+
+	
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	@Override
