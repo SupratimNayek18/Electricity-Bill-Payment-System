@@ -16,6 +16,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 @Table(name = "bill")
 public class Bill {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long billId;

@@ -29,7 +29,7 @@ public class Reading {
 	
 	@JsonIgnore
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="unitsConsumed_f",referencedColumnName = "unitsConsumed")
+	@JoinColumn(name="bill_fk",referencedColumnName = "billId")
 	private Bill bill;
 	
 	public Reading() {
