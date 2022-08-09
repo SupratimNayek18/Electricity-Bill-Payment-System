@@ -12,9 +12,6 @@ import org.hibernate.annotations.Parameter;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-
-
-
 @Entity
 @Table(name = "customer")
 public class Customer {
