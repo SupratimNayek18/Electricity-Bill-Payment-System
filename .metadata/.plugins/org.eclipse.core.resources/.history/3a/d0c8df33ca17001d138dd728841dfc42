@@ -1,5 +1,0 @@
-package electricitybillpaymentsystem.services;
-
-public interface CustomerService {
-
-}

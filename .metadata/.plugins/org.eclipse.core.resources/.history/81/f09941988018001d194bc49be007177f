@@ -1,5 +1,0 @@
-package electricitybillpaymentsystem.utils;
-
-public class CustomPasswordEncoder {
-
-}
