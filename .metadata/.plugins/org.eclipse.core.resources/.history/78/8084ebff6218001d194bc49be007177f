@@ -6,7 +6,6 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -32,11 +31,7 @@ public class Connection {
 	
 	@JsonIgnore
 	@OneToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
-	private Customer customer;
-	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "address_id_fk",referencedColumnName = "addressId")
-	private Address address;
+	private Connection connection;
 	
 	public Connection() {
 		super();
@@ -80,22 +75,6 @@ public class Connection {
 
 	public void setConnectionStatus(boolean connectionStatus) {
 		this.connectionStatus = connectionStatus;
-	}
-
-	public Customer getCustomer() {
-		return customer;
-	}
-
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
-	}
-
-	public Address getAddress() {
-		return address;
-	}
-
-	public void setAddress(Address address) {
-		this.address = address;
 	}
 
 	@Override

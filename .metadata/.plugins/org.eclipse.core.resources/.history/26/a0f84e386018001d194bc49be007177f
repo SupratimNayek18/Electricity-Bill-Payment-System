@@ -5,13 +5,11 @@ import java.time.LocalDate;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
-import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.Parameter;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -21,10 +19,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class Reading {
 
 	@Id
-	@GeneratedValue(generator = "Reading_SequenceStyleGenerator")
-	@GenericGenerator(name = "Reading_SequenceStyleGenerator", strategy = "org.hibernate.id.enhanced.SequenceStyleGenerator", parameters = {
-			@Parameter(name = "sequence_name", value = "reading_SEQ"), @Parameter(name = "optimizer", value = "hilo"),
-			@Parameter(name = "initial_value", value = "1"), @Parameter(name = "increment_size", value = "1") })
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long readingId;
 	private int unitsConsumed;
 	private String readingPhoto;	

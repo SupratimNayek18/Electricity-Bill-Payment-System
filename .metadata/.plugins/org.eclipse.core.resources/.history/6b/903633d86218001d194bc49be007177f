@@ -35,7 +35,6 @@ public class Customer {
 	@OneToOne(cascade = CascadeType.ALL)
 	private User user;
 	
-	@JsonIgnore
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "connection_fk",referencedColumnName = "connectionId")
 	private Connection connection;

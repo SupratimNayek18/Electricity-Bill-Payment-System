@@ -32,9 +32,9 @@ public class Bill {
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
 	private LocalDate dueDate;
 	
-//	@JsonIgnore
-//	@OneToOne(cascade = CascadeType.ALL)
-//	private Reading reading;
+	@JsonIgnore
+	@OneToOne(cascade = CascadeType.ALL)
+	private Reading reading;
 	
 	public Bill() {
 		super();

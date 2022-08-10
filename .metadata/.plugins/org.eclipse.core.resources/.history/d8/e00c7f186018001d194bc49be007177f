@@ -5,12 +5,10 @@ import java.time.LocalDate;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
-import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.Parameter;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -20,10 +18,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class Bill {
 	
 	@Id
-	@GeneratedValue(generator = "Bill_SequenceStyleGenerator")
-	@GenericGenerator(name = "Bill_SequenceStyleGenerator", strategy = "org.hibernate.id.enhanced.SequenceStyleGenerator", parameters = {
-			@Parameter(name = "sequence_name", value = "bill_SEQ"), @Parameter(name = "optimizer", value = "hilo"),
-			@Parameter(name = "initial_value", value = "1"), @Parameter(name = "increment_size", value = "1") })
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long billId;
 	private int unitsConsumed;
 	private int billAmount;	
@@ -32,9 +27,9 @@ public class Bill {
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
 	private LocalDate dueDate;
 	
-//	@JsonIgnore
-//	@OneToOne(cascade = CascadeType.ALL)
-//	private Reading reading;
+	@JsonIgnore
+	@OneToOne(cascade = CascadeType.ALL)
+	private Reading reading;
 	
 	public Bill() {
 		super();
@@ -88,12 +83,8 @@ public class Bill {
 	public void setDueDate(LocalDate dueDate) {
 		this.dueDate = dueDate;
 	}
-
-	@Override
-	public String toString() {
-		return "Bill [billId=" + billId + ", unitsConsumed=" + unitsConsumed + ", billAmount=" + billAmount
-				+ ", billDate=" + billDate + ", dueDate=" + dueDate + "]";
-	}
+		
+	
 	
 }
 

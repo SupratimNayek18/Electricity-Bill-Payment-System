@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -32,9 +33,9 @@ public class Bill {
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
 	private LocalDate dueDate;
 	
-//	@JsonIgnore
-//	@OneToOne(cascade = CascadeType.ALL)
-//	private Reading reading;
+	@JsonIgnore
+	@OneToOne(cascade = CascadeType.ALL)
+	private Reading reading;
 	
 	public Bill() {
 		super();
@@ -88,12 +89,8 @@ public class Bill {
 	public void setDueDate(LocalDate dueDate) {
 		this.dueDate = dueDate;
 	}
-
-	@Override
-	public String toString() {
-		return "Bill [billId=" + billId + ", unitsConsumed=" + unitsConsumed + ", billAmount=" + billAmount
-				+ ", billDate=" + billDate + ", dueDate=" + dueDate + "]";
-	}
+		
+	
 	
 }
 

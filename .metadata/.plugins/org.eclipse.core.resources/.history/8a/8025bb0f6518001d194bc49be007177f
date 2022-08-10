@@ -35,7 +35,7 @@ public class Connection {
 	private Customer customer;
 	
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "address_id_fk",referencedColumnName = "addressId")
+	@JoinColumn(name = "address_id",referencedColumnName = "addressId")
 	private Address address;
 	
 	public Connection() {
@@ -80,22 +80,6 @@ public class Connection {
 
 	public void setConnectionStatus(boolean connectionStatus) {
 		this.connectionStatus = connectionStatus;
-	}
-
-	public Customer getCustomer() {
-		return customer;
-	}
-
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
-	}
-
-	public Address getAddress() {
-		return address;
-	}
-
-	public void setAddress(Address address) {
-		this.address = address;
 	}
 
 	@Override

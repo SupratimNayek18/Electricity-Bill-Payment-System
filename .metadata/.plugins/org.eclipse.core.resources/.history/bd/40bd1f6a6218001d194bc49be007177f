@@ -4,7 +4,6 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -34,11 +33,6 @@ public class Customer {
 	@JsonIgnore
 	@OneToOne(cascade = CascadeType.ALL)
 	private User user;
-	
-	@JsonIgnore
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "connection_fk",referencedColumnName = "connectionId")
-	private Connection connection;
 
 	// Default Constructor
 	public Customer() {
