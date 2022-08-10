@@ -1,0 +1,5 @@
+package electricitybillpaymentsystem.dto;
+
+public class CustomerDTO {
+
+}

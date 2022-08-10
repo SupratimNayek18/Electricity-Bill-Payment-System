@@ -23,21 +23,15 @@ public class Customer {
 	@GenericGenerator(name = "Customer_SequenceStyleGenerator", strategy = "org.hibernate.id.enhanced.SequenceStyleGenerator", parameters = {
 			@Parameter(name = "sequence_name", value = "customer_SEQ"), @Parameter(name = "optimizer", value = "hilo"),
 			@Parameter(name = "initial_value", value = "1"), @Parameter(name = "increment_size", value = "1") })
-	@Column(unique = true)
 	private Long customerId;
-	@Column(unique = true)
 	private Long aadharNumber;
 	
 	private String firstName;
 	private String middleName;
 	private String lastName;
 	
-	@Column(unique = true)
 	private String mobileNumber;
-	
-	@Column(unique = true)
 	private String email;
-	
 	private String gender;
 	
 	@JsonIgnore

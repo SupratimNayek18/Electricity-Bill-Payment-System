@@ -1,0 +1,16 @@
+package electricitybillpaymentsystem.dto;
+
+public class CustomerDTO {
+	
+	private Long customerId;
+	private Long aadharNumber;
+	
+	private String firstName;
+	private String middleName;
+	private String lastName;
+	
+	private String mobileNumber;
+	private String email;
+	private String gender;
+
+}

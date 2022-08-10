@@ -1,0 +1,51 @@
+package electricitybillpaymentsystem.services;
+
+import javax.transaction.Transactional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import electricitybillpaymentsystem.entities.Customer;
+import electricitybillpaymentsystem.entities.User;
+import electricitybillpaymentsystem.dto.CustomerDTO;
+
+import electricitybillpaymentsystem.repository.CustomerRepository;
+
+@Service
+@Transactional
+public class CustomerServiceImpl implements CustomerService{
+
+	@Autowired
+    private CustomerRepository customerRepository;
+	
+	@Override
+	public Customer register(CustomerDTO customerDTO,String userName,String password){
+		
+		Customer customer = new Customer();
+		customer.setFirstName(customerDTO.getFirstName());
+		customer.setLastName(customerDTO.getLastName());
+		customer.setMiddleName(customerDTO.getMiddleName());
+		customer.setAadharNumber(customerDTO.getAadharNumber());
+		customer.setEmail(customerDTO.getEmail());
+		customer.setGender(customerDTO.getEmail());
+		customer.setMobileNumber(customerDTO.getMobileNumber());
+		
+		User user = new User();
+		user.setUserName(userName);
+		user.setPassword(password);
+		
+		customer.setUser(user);
+		user.setCustomer(customer);
+		
+		return customerRepository.save(customer);
+	}
+
+
+	@Override
+	public Customer login(String customerId, String password) throws CustomerDontExistException {
+		return null;
+	}
+
+
+
+}

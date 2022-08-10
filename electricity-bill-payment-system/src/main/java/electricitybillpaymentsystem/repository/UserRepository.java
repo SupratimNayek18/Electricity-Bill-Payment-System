@@ -11,10 +11,7 @@ import electricitybillpaymentsystem.entities.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 	
-	@Query("select u from User u where u.userId=:userId and u.password=:password")
-	  User userLogin(
-	    @Param("userId") String userId,
-	    @Param("password") String password
-	  );
+	@Query("select user from User user where user.userName=:userName")
+	public User login(@Param("userName") String userName);
 
 }

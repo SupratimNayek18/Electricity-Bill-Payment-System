@@ -1,16 +1,12 @@
 package electricitybillpaymentsystem.services;
 
-import java.util.Optional;
-
+import electricitybillpaymentsystem.dto.CustomerDTO;
 import electricitybillpaymentsystem.entities.Customer;
-import electricitybillpaymentsystem.exception.CustomerAlreadyExistException;
-import electricitybillpaymentsystem.exception.CustomerDontExistException;
+import electricitybillpaymentsystem.exception.CustomerNotFoundException;
 
 public interface CustomerService {
 	
-	Customer saveCustomer(Customer customer) throws CustomerAlreadyExistException; 
-	Optional<Customer> fetchCustomer(Long customerId);	
-	Customer loginCustomer(String customerId, String password) throws CustomerDontExistException;
-	Customer getCustomerByName(String firstName) throws CustomerDontExistException;
-	Optional<Customer> getCustomerById(Long customerId) throws CustomerDontExistException;
+	public Customer register(CustomerDTO customerDTO,String userName,String password);
+	
+	public Customer login(String userName, String password) throws CustomerNotFoundException;
 }

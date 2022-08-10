@@ -24,11 +24,10 @@ public class User {
 			@Parameter(name = "sequence_name", value = "user_SEQ"), @Parameter(name = "optimizer", value = "hilo"),
 			@Parameter(name = "initial_value", value = "1"), @Parameter(name = "increment_size", value = "1") })
 	
-	@Column(unique = true)
 	private Long userId;
 	private String userName;
-	@Column(unique = true)
 	private String password;
+	
 	@JsonIgnore
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="customer_fk",referencedColumnName = "customerId")
