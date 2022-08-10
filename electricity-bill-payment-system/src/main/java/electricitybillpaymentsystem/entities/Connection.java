@@ -3,8 +3,10 @@ package electricitybillpaymentsystem.entities;
 import java.time.LocalDate;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
@@ -25,6 +27,8 @@ public class Connection {
 			@Parameter(name = "sequence_name", value = "connection_SEQ"), @Parameter(name = "optimizer", value = "hilo"),
 			@Parameter(name = "initial_value", value = "1"), @Parameter(name = "increment_size", value = "1") })
 	private Long connectionId;
+	
+	@Column(columnDefinition = "BIGINT(20) NOT NULL UNIQUE KEY auto_increment")
 	private Long consumerNumber;
 	private LocalDate applicationDate;
 	private LocalDate connectionDate;
@@ -37,6 +41,10 @@ public class Connection {
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "address_id_fk",referencedColumnName = "addressId")
 	private Address address;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="reading_fk",referencedColumnName = "readingId")
+	private Reading reading;
 	
 	public Connection() {
 		super();
@@ -96,6 +104,14 @@ public class Connection {
 
 	public void setAddress(Address address) {
 		this.address = address;
+	}
+
+	public Reading getReading() {
+		return reading;
+	}
+
+	public void setReading(Reading reading) {
+		this.reading = reading;
 	}
 
 	@Override

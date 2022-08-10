@@ -1,10 +1,10 @@
 package electricitybillpaymentsystem.exception;
 
-public class CustomerNotFoundException extends Exception {
+public class UsernameAlreadyExistsException extends Exception {
 
 	private static final long serialVersionUID = 1L;
 
-	public CustomerNotFoundException(String message) {
+	public UsernameAlreadyExistsException(String message) {
 		super(message);
 	}
 

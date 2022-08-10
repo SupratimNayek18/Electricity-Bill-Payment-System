@@ -1,11 +1,10 @@
 package electricitybillpaymentsystem.exception;
 
-public class CustomerNotFoundException extends Exception {
+public class InvalidEmailException extends Exception {
 
 	private static final long serialVersionUID = 1L;
 
-	public CustomerNotFoundException(String message) {
+	public InvalidEmailException(String message) {
 		super(message);
 	}
-
 }
