@@ -12,6 +12,6 @@ import electricitybillpaymentsystem.entities.User;
 public interface UserRepository extends JpaRepository<User, Long> {
 	
 	@Query("select user from User user where user.userName=:userName")
-	public User login(@Param("userName") String userName);
+	public User findByUsername(@Param("userName") String userName);
 
 }

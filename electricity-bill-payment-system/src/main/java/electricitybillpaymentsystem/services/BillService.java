@@ -8,7 +8,7 @@ import electricitybillpaymentsystem.exception.ReadingNotFoundException;
 
 public interface BillService {
 	
-	public Bill getBill(Long consumerNumber) throws ConsumerNumberNotFoundException, ReadingNotFoundException;
+	public Bill getBill(Long consumerNumber) throws ConsumerNumberNotFoundException, ReadingNotFoundException, BillAlreadyPaidException;
 	
 	public Payment payBill(Long consumerNumber) throws ConsumerNumberNotFoundException, ReadingNotFoundException, BillAlreadyPaidException;
 

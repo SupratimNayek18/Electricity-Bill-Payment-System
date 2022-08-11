@@ -24,7 +24,7 @@ public class BillController {
 	BillService billService;
 	
 	@GetMapping("/getBill")
-	public ResponseEntity<Bill> getBill(@RequestParam Long consumerNumber) throws ConsumerNumberNotFoundException, ReadingNotFoundException{
+	public ResponseEntity<Bill> getBill(@RequestParam Long consumerNumber) throws ConsumerNumberNotFoundException, ReadingNotFoundException, BillAlreadyPaidException{
 		return new ResponseEntity<>(billService.getBill(consumerNumber),HttpStatus.OK);
 	}
 	

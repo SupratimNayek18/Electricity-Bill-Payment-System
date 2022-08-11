@@ -28,7 +28,7 @@ public class BillServiceImpl implements BillService {
 	PaymentRepository paymentRepository;
 
 	@Override
-	public Bill getBill(Long consumerNumber) throws ConsumerNumberNotFoundException, ReadingNotFoundException {
+	public Bill getBill(Long consumerNumber) throws ConsumerNumberNotFoundException, ReadingNotFoundException, BillAlreadyPaidException {
 
 		Connection connection = connectionRepository.getByConsumerNumber(consumerNumber);
 		
@@ -38,8 +38,10 @@ public class BillServiceImpl implements BillService {
 		Reading reading = connection.getReading();
 		if(reading==null) throw new ReadingNotFoundException("No Reading uploaded for current connection");
 		
-		return reading.getBill();
-
+		Bill bill = reading.getBill();
+		if(bill.getPayment().getStatus()) throw new BillAlreadyPaidException("Bill for current reading already paid");
+		
+		return bill;
 	}
 
 	@Override

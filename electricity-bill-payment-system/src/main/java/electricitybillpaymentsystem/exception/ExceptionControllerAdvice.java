@@ -10,39 +10,49 @@ public class ExceptionControllerAdvice {
 
 	@ExceptionHandler(ConsumerNumberNotFoundException.class)
 	@ResponseStatus(code = HttpStatus.NOT_FOUND)
-	  String consumerNumberNotFoundException(ConsumerNumberNotFoundException cnnfe) {
-	    return cnnfe.getMessage();
-	  }
-	
+	String consumerNumberNotFoundException(ConsumerNumberNotFoundException cnnfe) {
+		return cnnfe.getMessage();
+	}
+
 	@ExceptionHandler(BillAlreadyPaidException.class)
-	@ResponseStatus(code = HttpStatus.NOT_FOUND)
-	  String billAlreadyPaidException(BillAlreadyPaidException bape) {
-	    return bape.getMessage();
-	  }
-	
+	@ResponseStatus(code = HttpStatus.BAD_REQUEST)
+	String billAlreadyPaidException(BillAlreadyPaidException bape) {
+		return bape.getMessage();
+	}
+
 	@ExceptionHandler(CustomerNotFoundException.class)
 	@ResponseStatus(code = HttpStatus.NOT_FOUND)
-	  String customerNotFoundException(CustomerNotFoundException cnfe) {
-	    return cnfe.getMessage();
-	  }
+	String customerNotFoundException(CustomerNotFoundException cnfe) {
+		return cnfe.getMessage();
+	}
+
 	@ExceptionHandler(InvalidEmailException.class)
-	@ResponseStatus(code = HttpStatus.NOT_FOUND)
-	  String invalidEmailException(InvalidEmailException ieme) {
-	    return ieme.getMessage();
-	  }
-	@ExceptionHandler(InvalidPassWordException.class)
-	@ResponseStatus(code = HttpStatus.NOT_FOUND)
-	  String invalidPassWordException(InvalidPassWordException ipe) {
-	    return ipe.getMessage();
-	  }
+	@ResponseStatus(code = HttpStatus.BAD_REQUEST)
+	String invalidEmailException(InvalidEmailException ieme) {
+		return ieme.getMessage();
+	}
+
 	@ExceptionHandler(ReadingNotFoundException.class)
 	@ResponseStatus(code = HttpStatus.NOT_FOUND)
-	  String readingNotFoundException(ReadingNotFoundException rnfe) {
-	    return rnfe.getMessage();
-	  }
+	String readingNotFoundException(ReadingNotFoundException rnfe) {
+		return rnfe.getMessage();
+	}
+
 	@ExceptionHandler(UsernameAlreadyExistsException.class)
-	@ResponseStatus(code = HttpStatus.NOT_FOUND)
-	  String usernameAlreadyExistsException(UsernameAlreadyExistsException unae) {
-	    return unae.getMessage();
-	  }
+	@ResponseStatus(code = HttpStatus.CONFLICT)
+	String usernameAlreadyExistsException(UsernameAlreadyExistsException unae) {
+		return unae.getMessage();
+	}
+	
+	@ExceptionHandler(InvalidUsernameException.class)
+	@ResponseStatus(code = HttpStatus.BAD_REQUEST)
+	String invalidUsernameException(InvalidUsernameException iue) {
+		return iue.getMessage();
+	}
+	
+	@ExceptionHandler(EmailAlreadyExistsException.class)
+	@ResponseStatus(code = HttpStatus.CONFLICT)
+	String emailAlreadyExistsException(EmailAlreadyExistsException eaee) {
+		return eaee.getMessage();
+	}
 }
