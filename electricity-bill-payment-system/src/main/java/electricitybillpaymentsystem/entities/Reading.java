@@ -37,6 +37,7 @@ public class Reading {
 	@JoinColumn(name="bill_fk",referencedColumnName = "billId")
 	private Bill bill;
 	
+
 	public Reading() {
 		super();
 	}
@@ -90,5 +91,19 @@ public class Reading {
 		this.pricePerUnits = pricePerUnits;
 	}
 	
+
+	public Bill getBill() {
+		return bill;
+	}
+
+	public void setBill(Bill bill) {
+		this.bill = bill;
+	}
+
+	@Override
+	public String toString() {
+		return "Reading [readingId=" + readingId + ", unitsConsumed=" + unitsConsumed + ", readingPhoto=" + readingPhoto
+				+ ", readingDate=" + readingDate + ", pricePerUnits=" + pricePerUnits + "]";
+	}
 	
 }

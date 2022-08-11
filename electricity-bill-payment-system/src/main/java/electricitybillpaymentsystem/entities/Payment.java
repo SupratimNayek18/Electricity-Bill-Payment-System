@@ -13,7 +13,7 @@ import org.hibernate.annotations.Parameter;
 @Entity
 @Table(name = "payment")
 public class Payment {
-	
+
 	@Id
 	@GeneratedValue(generator = "Payment_SequenceStyleGenerator")
 	@GenericGenerator(name = "Payment_SequenceStyleGenerator", strategy = "org.hibernate.id.enhanced.SequenceStyleGenerator", parameters = {
@@ -24,8 +24,10 @@ public class Payment {
 	private Double latePaymentCharges;
 	private Double totalPaid;
 	private Boolean status;
-	
-	public Payment() {}
+
+	public Payment() {
+		super();
+	}
 
 	public Long getPaymentId() {
 		return paymentId;
@@ -72,6 +74,5 @@ public class Payment {
 		return "Payment [paymentId=" + paymentId + ", paymentDate=" + paymentDate + ", latePaymentCharges="
 				+ latePaymentCharges + ", totalPaid=" + totalPaid + ", status=" + status + "]";
 	}
-	
-	
+
 }

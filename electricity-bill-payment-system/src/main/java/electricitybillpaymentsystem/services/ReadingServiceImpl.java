@@ -1,14 +1,13 @@
 package electricitybillpaymentsystem.services;
 
-import java.util.Optional;
+import java.time.LocalDate;
 
 import javax.transaction.Transactional;
-
-import java.time.LocalDate;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import electricitybillpaymentsystem.entities.Bill;
 import electricitybillpaymentsystem.entities.Connection;
 import electricitybillpaymentsystem.entities.Reading;
 import electricitybillpaymentsystem.exception.ConsumerNumberNotFoundException;
@@ -38,6 +37,14 @@ public class ReadingServiceImpl implements ReadingService {
 		reading.setReadingDate(LocalDate.now());
 		reading.setReadingPhoto("Uploaded");
 		reading.setUnitsConsumed(consumedUnits);
+		
+		Bill bill = new Bill();
+		bill.setUnitsConsumed(reading.getUnitsConsumed());
+		bill.setBillDate(LocalDate.now());
+		bill.setDueDate(LocalDate.now());
+		bill.setBillAmount(bill.getUnitsConsumed()*reading.getPricePerUnits());
+		
+		reading.setBill(bill);
 		
 		connection.setReading(reading);
 		

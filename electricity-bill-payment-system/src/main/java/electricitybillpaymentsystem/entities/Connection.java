@@ -3,10 +3,8 @@ package electricitybillpaymentsystem.entities;
 import java.time.LocalDate;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
@@ -28,7 +26,6 @@ public class Connection {
 			@Parameter(name = "initial_value", value = "1"), @Parameter(name = "increment_size", value = "1") })
 	private Long connectionId;
 	
-	@Column(columnDefinition = "BIGINT(20) NOT NULL UNIQUE KEY auto_increment")
 	private Long consumerNumber;
 	private LocalDate applicationDate;
 	private LocalDate connectionDate;
