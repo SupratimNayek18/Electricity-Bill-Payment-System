@@ -116,7 +116,7 @@ public class CustomerServiceImpl implements CustomerService {
 	public Customer searchByCustomerEmail(String email) throws CustomerNotFoundException {
 		Customer customer = customerRepository.findByEmail(email);
 		if(customer!=null) return customer;
-		throw new CustomerNotFoundException("Customer with given id not found");
+		throw new CustomerNotFoundException("Customer with given email not found");
 	}
 
 }

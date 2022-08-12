@@ -39,7 +39,7 @@ public class BillServiceImpl implements BillService {
 		if(reading==null) throw new ReadingNotFoundException("No Reading uploaded for current connection");
 		
 		Bill bill = reading.getBill();
-		if(bill.getPayment().getStatus()) throw new BillAlreadyPaidException("Bill for current reading already paid");
+		if(bill.getPayment()!=null&&bill.getPayment().getStatus()) throw new BillAlreadyPaidException("Bill for current reading already paid");
 		
 		return bill;
 	}

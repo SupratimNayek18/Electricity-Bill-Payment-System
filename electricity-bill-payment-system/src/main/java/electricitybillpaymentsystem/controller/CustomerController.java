@@ -1,12 +1,9 @@
 package electricitybillpaymentsystem.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,32 +26,35 @@ public class CustomerController {
 	@Autowired
 	private CustomerService customerService;
 
-	//Mapping for registering customer
+	// Mapping for registering customer
 	@PostMapping("/register")
 	public ResponseEntity<Customer> registerUser(@RequestParam String userName, @RequestParam String password,
-			@RequestBody CustomerDTO customerDTO)
-			throws InvalidUsernameException, InvalidEmailException, UsernameAlreadyExistsException, EmailAlreadyExistsException {
-		
-		return new ResponseEntity<>(customerService.register(customerDTO,userName,password), HttpStatus.OK);
-		
+			@RequestBody CustomerDTO customerDTO) throws InvalidUsernameException, InvalidEmailException,
+			UsernameAlreadyExistsException, EmailAlreadyExistsException {
+
+		return new ResponseEntity<>(customerService.register(customerDTO, userName, password), HttpStatus.OK);
+
 	}
 
-	//Mapping for customer login
+	// Mapping for customer login
 	@GetMapping("/login")
-	public ResponseEntity<Customer> login(@RequestParam String userName,@RequestParam String password) throws CustomerNotFoundException{
-		
-		return new ResponseEntity<>(customerService.login(userName, password),HttpStatus.FOUND);
-		
+	public ResponseEntity<Customer> login(@RequestParam String userName, @RequestParam String password)
+			throws CustomerNotFoundException {
+
+		return new ResponseEntity<>(customerService.login(userName, password), HttpStatus.FOUND);
+
+	}
+
+	// Mapping to find customer by id
+	@GetMapping("/searchByCustomerId")
+	public ResponseEntity<Customer> searchByCustomerId(@RequestParam Long customerId) throws CustomerNotFoundException {
+		return new ResponseEntity<>(customerService.searchByCustomerId(customerId), HttpStatus.OK);
 	}
 	
-	@GetMapping("/customerbyid/{customerId}")
-	public ResponseEntity<Customer> searchByCustomerId(@PathVariable Long customerId) throws CustomerNotFoundException{
-	  	return new ResponseEntity<>(customerService.searchByCustomerId(customerId),HttpStatus.OK);
-	  }
-	
-	@GetMapping("/customerbyemail/{email}")
-	public ResponseEntity<Customer> searchByCustomerEmail(@PathVariable String email) throws CustomerNotFoundException{
-	  	return new ResponseEntity<>(customerService.searchByCustomerEmail(email),HttpStatus.OK);
-	  }
+	//Mapping to find customer by email
+	@GetMapping("/searchByCustomerEmail")
+	public ResponseEntity<Customer> searchByCustomerEmail(@RequestParam String email) throws CustomerNotFoundException {
+		return new ResponseEntity<>(customerService.searchByCustomerEmail(email), HttpStatus.OK);
+	}
 
 }
