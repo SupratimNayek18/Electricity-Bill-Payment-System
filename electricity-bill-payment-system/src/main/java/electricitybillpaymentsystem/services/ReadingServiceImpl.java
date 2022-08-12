@@ -30,7 +30,7 @@ public class ReadingServiceImpl implements ReadingService {
 		Connection connection = connectionRepository.getByConsumerNumber(consumerNumber);
 		
 		if (connection==null)
-			throw new ConsumerNumberNotFoundException("Connection with guven consumer number not found");
+			throw new ConsumerNumberNotFoundException("Connection with given consumer number not found");
 		
 		Reading reading = new Reading();
 		reading.setPricePerUnits(5);
