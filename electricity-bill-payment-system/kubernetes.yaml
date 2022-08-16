@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ebms-deployment
+  namespace: default
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      ebms: web
+  template:
+    metadata:
+      labels:
+        ebms: web
+    spec:
+      containers:
+        - name: ebms-container
+          image: vulka9n/ebms:1
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ebms-entrypoint
+  namespace: default
+spec:
+  type: NodePort
+  selector:
+    ebms: web
+  ports:
+    - port: 8080
+      targetPort: 8080
+      nodePort: 30001
