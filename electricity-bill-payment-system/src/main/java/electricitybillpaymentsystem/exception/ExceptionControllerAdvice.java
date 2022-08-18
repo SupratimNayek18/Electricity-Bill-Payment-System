@@ -55,4 +55,10 @@ public class ExceptionControllerAdvice {
 	String emailAlreadyExistsException(EmailAlreadyExistsException eaee) {
 		return eaee.getMessage();
 	}
+	
+	@ExceptionHandler(ConnectionAlreadyExistsException.class)
+	@ResponseStatus(code = HttpStatus.CONFLICT)
+	String connectionAlreadyExistsException(ConnectionAlreadyExistsException caee) {
+		return caee.getMessage();
+	}
 }

@@ -12,6 +12,7 @@ import electricitybillpaymentsystem.dto.AddressDTO;
 import electricitybillpaymentsystem.entities.Address;
 import electricitybillpaymentsystem.entities.Connection;
 import electricitybillpaymentsystem.entities.Customer;
+import electricitybillpaymentsystem.exception.ConnectionAlreadyExistsException;
 import electricitybillpaymentsystem.exception.ConsumerNumberNotFoundException;
 import electricitybillpaymentsystem.exception.CustomerNotFoundException;
 import electricitybillpaymentsystem.repository.ConnectionRepository;
@@ -28,13 +29,15 @@ public class ConnectionServiceImpl implements ConnectionService {
 	private ConnectionRepository connectionRepository;
 
 	@Override
-	public Connection newConnection(Long customerId, AddressDTO addressDTO) throws CustomerNotFoundException {
+	public Connection newConnection(Long customerId, AddressDTO addressDTO) throws CustomerNotFoundException, ConnectionAlreadyExistsException {
 
 		Optional<Customer> optionalCustomer = customerRepository.findById(customerId);
 		if (!optionalCustomer.isPresent())
 			throw new CustomerNotFoundException("Customer Not Found");
 		else {
 			Customer customer = optionalCustomer.get();
+			
+			if(customer.getConnection()!=null) throw new ConnectionAlreadyExistsException("Connection for this customer id already exists");
 
 			// Setting connection to customer
 			Connection connection = new Connection();

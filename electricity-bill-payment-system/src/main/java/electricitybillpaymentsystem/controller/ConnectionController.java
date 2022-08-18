@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import electricitybillpaymentsystem.dto.AddressDTO;
 import electricitybillpaymentsystem.entities.Connection;
 import electricitybillpaymentsystem.entities.Customer;
+import electricitybillpaymentsystem.exception.ConnectionAlreadyExistsException;
 import electricitybillpaymentsystem.exception.ConsumerNumberNotFoundException;
 import electricitybillpaymentsystem.exception.CustomerNotFoundException;
 import electricitybillpaymentsystem.services.ConnectionService;
@@ -25,7 +26,7 @@ public class ConnectionController {
 	ConnectionService connectionService;
 	
 	@PostMapping("/getConnection")
-	public ResponseEntity<Connection> getConnection(@RequestParam Long customerId,@RequestBody AddressDTO addressDTO) throws CustomerNotFoundException{
+	public ResponseEntity<Connection> getConnection(@RequestParam Long customerId,@RequestBody AddressDTO addressDTO) throws CustomerNotFoundException, ConnectionAlreadyExistsException{
 		
 		return new ResponseEntity<>(connectionService.newConnection(customerId, addressDTO),HttpStatus.OK);
 		

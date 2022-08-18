@@ -1,0 +1,18 @@
+Build Image :
+
+docker build -f Dockerfile -t ebms:1.2 .
+
+
+Create Container :
+
+docker run -d -p 8080:8080 --name ebms ebms:1.2
+
+
+Tag Image :
+
+docker tag ebms:1.2 vulka9n/ebms:1.2
+
+
+Push Image :
+
+docker push vulka9n/ebms:1.2
